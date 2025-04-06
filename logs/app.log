@@ -1,0 +1,46 @@
+2025-04-06 10:00:33 [Test worker] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-04-06 10:00:33 [Test worker] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.DemoApplicationTests
+2025-04-06 10:00:33 [Test worker] INFO  com.example.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 17.0.4.1 with PID 17596 (started by 17324 in C:\data\development\projects\demo)
+2025-04-06 10:00:33 [Test worker] INFO  com.example.demo.DemoApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-04-06 10:00:36 [Test worker] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-04-06 10:00:36 [Test worker] INFO  com.example.demo.DemoApplicationTests - Started DemoApplicationTests in 2.814 seconds (process running for 4.67)
+2025-04-06 10:00:45 [restartedMain] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 17.0.4.1 with PID 25568 (C:\data\development\projects\demo\build\classes\java\main started by 17324 in C:\data\development\projects\demo)
+2025-04-06 10:00:45 [restartedMain] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2025-04-06 10:00:45 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-06 10:00:45 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-06 10:00:46 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-04-06 10:00:46 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-04-06 10:00:46 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-06 10:00:46 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-06 10:00:46 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-06 10:00:46 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1213 ms
+2025-04-06 10:00:47 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-04-06 10:00:47 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-04-06 10:00:47 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-04-06 10:00:47 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-04-06 10:00:47 [restartedMain] INFO  com.example.demo.DemoApplication - Started DemoApplication in 2.369 seconds (process running for 3.172)
+2025-04-06 10:01:04 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-06 10:01:04 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-06 10:01:04 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-04-06 10:01:04 [http-nio-8081-exec-1] INFO  com.example.demo.controllers.DemoController - Inside DemoController
+2025-04-06 10:01:04 [http-nio-8081-exec-1] INFO  com.example.demo.helpers.ExcelUtility - Inside Excel Utility writeResponseOneToExcel
+2025-04-06 10:07:08 [restartedMain] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 17.0.4.1 with PID 22988 (C:\data\development\projects\demo\build\classes\java\main started by 17324 in C:\data\development\projects\demo)
+2025-04-06 10:07:08 [restartedMain] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2025-04-06 10:07:08 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-06 10:07:08 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-06 10:07:09 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-04-06 10:07:09 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-04-06 10:07:09 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-06 10:07:09 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-06 10:07:09 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-06 10:07:09 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1221 ms
+2025-04-06 10:07:10 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-04-06 10:07:10 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-04-06 10:07:10 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-04-06 10:07:10 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-04-06 10:07:10 [restartedMain] INFO  com.example.demo.DemoApplication - Started DemoApplication in 2.389 seconds (process running for 3.23)
+2025-04-06 10:07:49 [http-nio-8081-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-06 10:07:49 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-06 10:07:49 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-04-06 10:07:49 [http-nio-8081-exec-1] INFO  com.example.demo.controllers.DemoController - Inside DemoController
+2025-04-06 10:07:49 [http-nio-8081-exec-1] INFO  com.example.demo.helpers.ExcelUtility - Inside Excel Utility writeResponseOneToExcel
