@@ -1,6 +1,6 @@
 package com.example.demo.clients;
 
-import com.example.demo.models.ApiResponseOne;
+import com.example.demo.models.*;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -23,11 +23,59 @@ public class ApiCallOneClient {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public ApiResponseOne[] fetchDataForAPIOne(HttpServletResponse response) throws IOException {
+    public ApiResponseOne[] fetchDataForAPIOne() throws IOException {
         ResponseEntity<ApiResponseOne[]> apiResponse =
                 restTemplate.getForEntity(apiOneUrl, ApiResponseOne[].class);
 
         ApiResponseOne[] users = apiResponse.getBody();
+
+        if (users == null) {
+            throw new RuntimeException("No data from API");
+        }
+        return users;
+    }
+
+    public ApiResponseTwo[] fetchDataForAPITwo() throws IOException {
+        ResponseEntity<ApiResponseTwo[]> apiResponse =
+                restTemplate.getForEntity(apiOneUrl, ApiResponseTwo[].class);
+
+        ApiResponseTwo[] users = apiResponse.getBody();
+
+        if (users == null) {
+            throw new RuntimeException("No data from API");
+        }
+        return users;
+    }
+
+    public ApiResponseThree[] fetchDataForAPIThree() throws IOException {
+        ResponseEntity<ApiResponseThree[]> apiResponse =
+                restTemplate.getForEntity(apiOneUrl, ApiResponseThree[].class);
+
+        ApiResponseThree[] users = apiResponse.getBody();
+
+        if (users == null) {
+            throw new RuntimeException("No data from API");
+        }
+        return users;
+    }
+
+    public ApiResponseFour[] fetchDataForAPIFour() throws IOException {
+        ResponseEntity<ApiResponseFour[]> apiResponse =
+                restTemplate.getForEntity(apiOneUrl, ApiResponseFour[].class);
+
+        ApiResponseFour[] users = apiResponse.getBody();
+
+        if (users == null) {
+            throw new RuntimeException("No data from API");
+        }
+        return users;
+    }
+
+    public ApiResponseFive[] fetchDataForAPIFive() throws IOException {
+        ResponseEntity<ApiResponseFive[]> apiResponse =
+                restTemplate.getForEntity(apiOneUrl, ApiResponseFive[].class);
+
+        ApiResponseFive[] users = apiResponse.getBody();
 
         if (users == null) {
             throw new RuntimeException("No data from API");
