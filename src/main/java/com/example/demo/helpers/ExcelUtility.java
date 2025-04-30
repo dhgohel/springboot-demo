@@ -20,7 +20,7 @@ public class ExcelUtility {
         logger.info("Inside Excel Utility writeResponseOneToExcel - 1");
 
         try {
-            Sheet sheet = workbook.createSheet(sheetName);
+            Sheet sheet = workbook.getSheet(sheetName);
 
             Row header = sheet.createRow(0);
             header.createCell(0).setCellValue("ID");
@@ -45,7 +45,7 @@ public class ExcelUtility {
 
         try {
 
-            Sheet sheet = workbook.createSheet(sheetName);
+            Sheet sheet = workbook.getSheet(sheetName);
 
             Row header = sheet.createRow(0);
             header.createCell(0).setCellValue("ID");
@@ -71,7 +71,7 @@ public class ExcelUtility {
 
         try{
 
-            Sheet sheet = workbook.createSheet(sheetName);
+            Sheet sheet = workbook.getSheet(sheetName);
 
             Row header = sheet.createRow(0);
             header.createCell(0).setCellValue("ID");
@@ -97,7 +97,7 @@ public class ExcelUtility {
 
         try{
 
-            Sheet sheet = workbook.createSheet(sheetName);
+            Sheet sheet = workbook.getSheet(sheetName);
 
             Row header = sheet.createRow(0);
             header.createCell(0).setCellValue("ID");
@@ -123,7 +123,7 @@ public class ExcelUtility {
 
         try{
 
-            Sheet sheet = workbook.createSheet(sheetName);
+            Sheet sheet = workbook.getSheet(sheetName);
 
             Row header = sheet.createRow(0);
             header.createCell(0).setCellValue("ID");

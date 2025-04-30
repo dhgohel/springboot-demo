@@ -15,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -38,97 +35,110 @@ public class DemoService {
 
         ExecutorService executor = Executors.newFixedThreadPool(5);
 
-        try (InputStream inputStream = new ClassPathResource("templates/template.xlsx").getInputStream();
-             Workbook workbook = new XSSFWorkbook(inputStream)) {
-            ExcelUtility excelUtilty = new ExcelUtility();
+        File copiedTemplate = new File("data-from-api.xlsx");
 
-            CountDownLatch latch = new CountDownLatch(5);
+        try (InputStream templateStream = new ClassPathResource("templates/template.xlsx").getInputStream();
+             OutputStream outStream = new FileOutputStream(copiedTemplate)) {
 
-            // Task 1 - API One
-            executor.submit(() -> {
-                try {
-                    ApiResponseOne[] apiResponseDataList = apicallOne.fetchDataForAPIOne();
-                    synchronized (workbook) {
-                        excelUtilty.writeResponseOneToExcel(apiResponseDataList, "API-1-Data", workbook);
-                    }
-                } catch (Exception e) {
-                    System.err.println("API 1 failed: " + e.getMessage());
-                } finally {
-                    latch.countDown();
-                }
-            });
-
-            // Task 2 - API Two
-            executor.submit(() -> {
-                try {
-                    ApiResponseTwo[] apiResponseDataList = apicallOne.fetchDataForAPITwo();
-                    synchronized (workbook) {
-                        excelUtilty.writeResponseTwoToExcel(apiResponseDataList, "API-2-Data", workbook);
-                    }
-                } catch (Exception e) {
-                    System.err.println("API 2 failed: " + e.getMessage());
-                } finally {
-                    latch.countDown();
-                }
-            });
-
-            // Task 3 - API Three
-            executor.submit(() -> {
-                try {
-                    ApiResponseThree[] apiResponseDataList = apicallOne.fetchDataForAPIThree();
-                    synchronized (workbook) {
-                        excelUtilty.writeResponseThreeToExcel(apiResponseDataList, "API-3-Data", workbook);
-                    }
-                } catch (Exception e) {
-                    System.err.println("API 3 failed: " + e.getMessage());
-                } finally {
-                    latch.countDown();
-                }
-            });
-
-            // Task 4 - API Four
-            executor.submit(() -> {
-                try {
-                    ApiResponseFour[] apiResponseDataList = apicallOne.fetchDataForAPIFour();
-                    synchronized (workbook) {
-                        excelUtilty.writeResponseFourToExcel(apiResponseDataList, "API-4-Data", workbook);
-                    }
-                } catch (Exception e) {
-                    System.err.println("API 4 failed: " + e.getMessage());
-                } finally {
-                    latch.countDown();
-                }
-            });
-
-            // Task 5 - API Five
-            executor.submit(() -> {
-                try {
-                    ApiResponseFive[] apiResponseDataList = apicallOne.fetchDataForAPIFive();
-                    synchronized (workbook) {
-                        excelUtilty.writeResponseFiveToExcel(apiResponseDataList, "API-5-Data", workbook);
-                    }
-                } catch (Exception e) {
-                    System.err.println("API 5 failed: " + e.getMessage());
-                } finally {
-                    latch.countDown();
-                }
-            });
-
-            // Wait for all threads
-            try {
-                latch.await();
-                executor.shutdown();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            // Copy template to new file
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = templateStream.read(buffer)) != -1) {
+                outStream.write(buffer, 0, bytesRead);
             }
 
+            // Now open the copied template
+            try (InputStream inputStream = new FileInputStream(copiedTemplate);
+                 Workbook workbook = new XSSFWorkbook(inputStream)) {
+                ExcelUtility excelUtilty = new ExcelUtility();
 
-            response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-            response.setHeader("Content-Disposition", "attachment; filename=template.xlsx");
+                CountDownLatch latch = new CountDownLatch(5);
 
-            workbook.write(response.getOutputStream());
+                // Task 1 - API One
+                executor.submit(() -> {
+                    try {
+                        ApiResponseOne[] apiResponseDataList = apicallOne.fetchDataForAPIOne();
+                        synchronized (workbook) {
+                            excelUtilty.writeResponseOneToExcel(apiResponseDataList, "API-1-Data", workbook);
+                        }
+                    } catch (Exception e) {
+                        System.err.println("API 1 failed: " + e.getMessage());
+                    } finally {
+                        latch.countDown();
+                    }
+                });
 
-            workbook.close();
+                // Task 2 - API Two
+                executor.submit(() -> {
+                    try {
+                        ApiResponseTwo[] apiResponseDataList = apicallOne.fetchDataForAPITwo();
+                        synchronized (workbook) {
+                            excelUtilty.writeResponseTwoToExcel(apiResponseDataList, "API-2-Data", workbook);
+                        }
+                    } catch (Exception e) {
+                        System.err.println("API 2 failed: " + e.getMessage());
+                    } finally {
+                        latch.countDown();
+                    }
+                });
+
+                // Task 3 - API Three
+                executor.submit(() -> {
+                    try {
+                        ApiResponseThree[] apiResponseDataList = apicallOne.fetchDataForAPIThree();
+                        synchronized (workbook) {
+                            excelUtilty.writeResponseThreeToExcel(apiResponseDataList, "API-3-Data", workbook);
+                        }
+                    } catch (Exception e) {
+                        System.err.println("API 3 failed: " + e.getMessage());
+                    } finally {
+                        latch.countDown();
+                    }
+                });
+
+                // Task 4 - API Four
+                executor.submit(() -> {
+                    try {
+                        ApiResponseFour[] apiResponseDataList = apicallOne.fetchDataForAPIFour();
+                        synchronized (workbook) {
+                            excelUtilty.writeResponseFourToExcel(apiResponseDataList, "API-4-Data", workbook);
+                        }
+                    } catch (Exception e) {
+                        System.err.println("API 4 failed: " + e.getMessage());
+                    } finally {
+                        latch.countDown();
+                    }
+                });
+
+                // Task 5 - API Five
+                executor.submit(() -> {
+                    try {
+                        ApiResponseFive[] apiResponseDataList = apicallOne.fetchDataForAPIFive();
+                        synchronized (workbook) {
+                            excelUtilty.writeResponseFiveToExcel(apiResponseDataList, "API-5-Data", workbook);
+                        }
+                    } catch (Exception e) {
+                        System.err.println("API 5 failed: " + e.getMessage());
+                    } finally {
+                        latch.countDown();
+                    }
+                });
+
+                // Wait for all threads
+                try {
+                    latch.await();
+                    executor.shutdown();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+                response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                response.setHeader("Content-Disposition", "attachment; filename=data-from-api.xlsx");
+
+                workbook.write(response.getOutputStream());
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
